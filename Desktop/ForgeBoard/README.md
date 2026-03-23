@@ -245,6 +245,7 @@ Typical planner questions:
 - `docs/client_presentation_guide.md`
 - `docs/excel_sheets_client_guide.md`
 - `docs/overview_tab_guide.md`
+- `docs/finished_goods_tab_guide.md`
 
 ## Validation
 

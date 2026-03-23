@@ -27,6 +27,43 @@ The `Overview` experience is built from:
 - `result["aggregate_shortages"]`: component shortages across total scenario demand
 - `build_summary_metrics(...)`: compact KPI rollup
 
+## Client-Friendly Explanation
+
+`The Overview tab gives management and planners a fast summary of the current production position. It shows what can be built, what is blocked, which materials are creating pressure, and what the system recommends focusing on first.`
+
+### Simple explanation of the top summary numbers
+
+- `Finished Goods`: how many finished products are being evaluated in this scenario
+- `Net Demand`: how much demand is still open after subtracting stock already available
+- `Planned Build`: how many units the system recommends producing now
+- `Blocked FGs`: how many finished goods cannot be produced right now
+- `Top Shortage`: the material causing the biggest shortage pressure
+- `Lead FG`: the finished good the system currently wants the planner to focus on first
+- `Total shortage volume`: the total missing material quantity across all shortages
+- `FGs fully coverable`: how many finished goods can be fully supplied with current stock
+
+### Simple explanation of the Production Posture table
+
+`This table shows each finished good one by one and tells the planner how strong or weak its current production position is.`
+
+- `Net Demand`: how much still needs to be produced
+- `Max Producible`: the maximum the plant could make with today's available materials
+- `Recommended Build`: what ForgeBoard suggests building now
+- `Coverage`: how much of the open demand can be covered immediately
+- `Priority Score`: how strongly the system recommends focusing on that item
+
+### Simple explanation of the Procurement Pressure table
+
+`This table shows which materials are creating the most pressure across the whole plan.`
+
+- `Required Qty`: how much of that material is needed
+- `Available Qty`: how much is currently in stock
+- `Shortage Qty`: how much is missing
+
+### Simple explanation of the Decision Snapshot
+
+`This is the quick management summary. It tells you the top recommended finished good, the main material problems, and which workbook the scenario came from.`
+
 ## Summary Band Metrics
 
 ### Finished Goods
