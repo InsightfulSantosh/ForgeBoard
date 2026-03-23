@@ -13,7 +13,6 @@ Naming note:
 
 - Product name: `ForgeBoard`
 - Python package and module path: `bom_ai_engine`
-- Installed CLI commands: `forgeboard` and `bom-ai-engine`
 
 This means the user-facing product name is now `ForgeBoard`, while the internal import path stays `bom_ai_engine` for compatibility.
 
@@ -25,34 +24,18 @@ Run commands from the repo root:
 cd /path/to/ForgeBoard
 ```
 
-Update the workbook path in the examples below to match your machine.
-
-Minimal CLI run:
+Run the Streamlit app:
 
 ```bash
-python3 -m bom_ai_engine \
-  --workbook "/Users/santoshkumar/Downloads/CAN MAKE - Sample Data to Santosh - 16-03-2026.xlsx" \
-  --output-dir "outputs/sample_run"
+streamlit run streamlit_app.py
 ```
 
-After installation, you can use the product command instead:
+Then:
 
-```bash
-forgeboard \
-  --workbook "/Users/santoshkumar/Downloads/CAN MAKE - Sample Data to Santosh - 16-03-2026.xlsx" \
-  --output-dir "outputs/sample_run"
-```
-
-Optional scenario inputs:
-
-```bash
-forgeboard \
-  --workbook "/path/to/client.xlsx" \
-  --output-dir "outputs/client_run" \
-  --demand-multiplier 1.2 \
-  --procurement-file "examples/procurement.example.json" \
-  --priority-file "examples/priority_hints.example.json"
-```
+- use `Use sample workbook` for the bundled scenario
+- or upload a live workbook from the sidebar
+- adjust demand multiplier, procurement overrides, and priority hints
+- run the scenario and download artifacts from the `Downloads` tab
 
 ## Installation
 
@@ -68,12 +51,6 @@ Alternative setup with `pip`:
 
 ```bash
 python3 -m pip install -e ".[ui,llm-gemini]"
-```
-
-If you only need the deterministic CLI without Streamlit or Gemini extras:
-
-```bash
-python3 -m pip install -e .
 ```
 
 ## Workbook Requirements
@@ -107,16 +84,6 @@ The engine answers:
 - How does the answer change if demand grows or stock is procured?
 - Which FG should be prioritized first under the current scenario?
 
-## CLI Modes
-
-You can run ForgeBoard in three equivalent ways:
-
-- `python3 -m bom_ai_engine`
-- `forgeboard`
-- `bom-ai-engine`
-
-The first form uses the internal module path. The latter two are installed console aliases.
-
 ## Streamlit UX
 
 Install the UI dependencies first, then create a `.env` file in the repo root if you want Gemini-backed answers:
@@ -134,24 +101,30 @@ streamlit run streamlit_app.py
 
 The app supports:
 
+- executive overview snapshot with scenario status, lead FG, and procurement pressure
 - sample workbook mode
 - file upload for new client workbooks
 - demand multiplier and procurement scenario controls
+- finished-good fulfillment summary and explicit blocker-reason view
+- full finished-good shortage tables and aggregate material tables
+- procurement ranking and raw material importance-by-use ranking
 - priority hint JSON input
 - planner Q&A using the Phase 2 assistant
-- Gemini through LangChain for optional LLM responses
+- grounded Gemini through LangChain for optional LLM responses
 - download buttons for all generated artifacts
 
 ## Output Files
 
-Each run writes:
+Each run makes these files available in the `Downloads` tab:
 
 - `scenario_summary.json`: complete scenario payload and summary metadata
 - `fg_analysis.csv`: FG-level feasibility, coverage, and blocker view
 - `production_plan.csv`: priority-ranked build recommendation
 - `material_shortages.csv`: aggregated procurement pressure by component
+- `material_usage_ranking.csv`: raw materials ranked by usage breadth and required quantity
 - `phase1_report.md`: human-readable planning summary
 - `phase2_chat.md`: planner Q&A transcript when `--question` is provided
+- `phase2_chat.json`: structured Q&A payload when `--question` is provided
 
 ## Priority Hints Schema
 
@@ -198,31 +171,7 @@ This repo is the core decision engine. In a production workflow you can place it
 
 ## Phase 2 Assistant
 
-You can ask planner questions directly against the workbook scenario:
-
-```bash
-forgeboard \
-  --workbook "/Users/santoshkumar/Downloads/CAN MAKE - Sample Data to Santosh - 16-03-2026.xlsx" \
-  --output-dir "outputs/sample_run" \
-  --question "What can I produce today?" \
-  --question "Why is FG01 blocked?" \
-  --question "Which material should I procure first?"
-```
-
-This creates `phase2_chat.md`.
-
-Optional Gemini LangChain mode:
-
-```bash
-forgeboard \
-  --workbook "/Users/santoshkumar/Downloads/CAN MAKE - Sample Data to Santosh - 16-03-2026.xlsx" \
-  --output-dir "outputs/sample_run" \
-  --question "Summarize the main risks for today's plan." \
-  --use-llm \
-  --llm-model "gemini-2.5-flash"
-```
-
-The CLI and Streamlit app load `.env` automatically. Gemini uses `GOOGLE_API_KEY`. If the LangChain Gemini call fails, the assistant falls back to deterministic answers.
+You can ask planner questions directly inside the `Assistant` tab after running a scenario.
 
 Typical planner questions:
 
@@ -231,13 +180,14 @@ Typical planner questions:
 - `Which material should I procure first?`
 - `Which FG should I prioritize first?`
 
+The Streamlit app loads `.env` automatically. Gemini uses `GOOGLE_API_KEY`. ForgeBoard grounds LLM answers with deterministic engine output and structured scenario context. If the LangChain Gemini call fails or returns an unusable answer, the assistant falls back to deterministic answers.
+
 ## Repo Layout
 
-- `bom_ai_engine/`: core planning, assistant, reporting, and CLI modules
+- `bom_ai_engine/`: core planning, assistant, reporting, and workflow modules
 - `streamlit_app.py`: ForgeBoard frontend
 - `examples/`: sample procurement and priority JSON files
 - `docs/`: client-facing explanation and presentation notes
-- `tests/`: unit tests for planning, reporting, and assistant flows
 
 ## Related Docs
 
@@ -246,11 +196,4 @@ Typical planner questions:
 - `docs/excel_sheets_client_guide.md`
 - `docs/overview_tab_guide.md`
 - `docs/finished_goods_tab_guide.md`
-
-## Validation
-
-Run the tests with:
-
-```bash
-.venv/bin/python -m unittest discover -s tests -v
-```
+- `docs/materials_tab_guide.md`

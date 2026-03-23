@@ -47,9 +47,9 @@ Simple explanation for client:
 
 When demoing ForgeBoard, explain that the experience is organized around five working views:
 
-- `Overview`: overall production posture and procurement pressure
-- `Finished Goods`: FG-by-FG feasibility, blockers, and shortage lines
-- `Materials`: aggregate shortages and buy-first shortlist
+- `Overview`: executive production summary, scenario posture, procurement pressure, and decision snapshot
+- `Finished Goods`: FG-by-FG feasibility, fulfillment status, blocker reasons, and shortage lines
+- `Materials`: aggregate shortages, procurement ranking, and raw material importance by use
 - `Assistant`: planner Q&A on top of the current scenario
 - `Downloads`: CSV, JSON, and markdown artifacts for handoff
 
@@ -260,13 +260,41 @@ Typical outputs:
 - FG analysis CSV
 - production plan CSV
 - material shortages CSV
+- material usage ranking CSV
 - markdown report
+- planner Q&A markdown and JSON when questions are used
 
 ---
 
 ## 4A. Finished Goods Tab Explanation
 
 This tab helps the planner understand one finished good at a time.
+
+### Fulfillment summary
+
+Meaning:
+
+`This gives a plain-language answer to whether the current demand can be fully met. If not, it clearly states how much can be built now and how much demand remains unmet.`
+
+How to explain:
+
+`This is the planner's quick answer card. It tells us whether we are fully covered, partially covered, or completely blocked for the selected finished good.`
+
+Key values:
+
+- `Build now`
+- `Unmet demand`
+- `Fulfillment`
+
+### Why this FG cannot be fully made
+
+Meaning:
+
+`This section shows the exact raw materials that are limiting the selected finished good, with available quantity, required quantity, and shortage quantity.`
+
+How to explain:
+
+`Instead of only saying the FG is blocked, ForgeBoard shows which raw materials are actually causing the problem and how severe each constraint is.`
 
 ### Net Demand
 
@@ -348,7 +376,7 @@ Meaning:
 
 How to explain:
 
-`Blocking components start with the limiting components and then include the largest shortage lines. This gives the planner a short actionable list of what is stopping production.`
+`Blocking components start with the limiting components and then include the largest shortage lines. This gives the planner a short actionable shortlist, while the blocker-reason table shows the detailed limiting-material explanation.`
 
 Simple distinction:
 
@@ -363,7 +391,7 @@ Why they may look similar:
 
 Meaning:
 
-`This section shows the biggest shortages for the selected finished good.`
+`This section shows the full shortage list for the selected finished good, ranked from the largest shortage downward.`
 
 Columns:
 
@@ -376,6 +404,50 @@ Columns:
 Client explanation:
 
 `This helps the planner understand not only which parts are blocking production, but also how large the shortage is for each part.`
+
+---
+
+## 4B. Materials Tab Explanation
+
+This tab helps the planner understand the material position across the full scenario.
+
+### Aggregate shortages
+
+Meaning:
+
+`This table shows the full shortage picture component by component across all selected finished goods.`
+
+How to explain:
+
+`This is the total material pressure view. It shows what the plant needs overall, what stock is available, and which materials have the biggest gap.`
+
+### Procurement ranking
+
+Meaning:
+
+`This is the full ranked component list by shortage magnitude.`
+
+How to explain:
+
+`If procurement wants the fastest possible ranking of shortage-driven priorities, this list gives that order directly across all shortage components.`
+
+### Raw material importance by use
+
+Meaning:
+
+`This table ranks raw materials by how widely they are used across finished goods and how much total quantity the current scenario requires.`
+
+How to explain:
+
+`Some materials are important not only because they are short, but because they affect many finished goods or large total demand. This view helps identify those strategically important materials.`
+
+Useful columns to mention:
+
+- `Used In FG Count`
+- `Used In FGs`
+- `Total Required Qty`
+- `Planned Consumption Qty`
+- `Usage Importance Score`
 
 ---
 
@@ -397,6 +469,8 @@ Then click:
 What to point out:
 
 - blocked finished goods
+- fulfillment summary for the selected FG
+- blocker-reason table for the selected FG
 - top shortages
 - recommended build quantities
 - downloadable planning artifacts
@@ -433,6 +507,7 @@ What to point out:
 
 - some FG feasibility may improve
 - procurement impact becomes visible before actual purchase
+- material ranking can change after procurement assumptions are added
 
 ### Step 4: Show business prioritization
 

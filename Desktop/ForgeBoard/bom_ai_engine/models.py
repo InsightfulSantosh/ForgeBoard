@@ -58,6 +58,18 @@ class AggregateShortage:
 
 
 @dataclass(frozen=True)
+class MaterialUsage:
+    component: str
+    used_in_fg_count: int
+    used_in_fgs: list[str]
+    total_required_qty: float
+    planned_consumption_qty: float
+    available_qty: float
+    shortage_qty: float
+    usage_importance_score: float
+
+
+@dataclass(frozen=True)
 class WorkbookData:
     demands: list[DemandLine]
     bom: dict[str, dict[str, float]]
@@ -71,7 +83,7 @@ class ScenarioResult:
     aggregate_shortages: list[AggregateShortage]
     remaining_inventory: dict[str, float]
     metadata: dict[str, Any]
+    material_usage_ranking: list[MaterialUsage] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
-

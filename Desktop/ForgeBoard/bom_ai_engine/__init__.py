@@ -1,4 +1,3 @@
-from .cli import main
+"""ForgeBoard planning engine package."""
 
-__all__ = ["main"]
-
+__all__: list[str] = []

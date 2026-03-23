@@ -51,11 +51,11 @@ def build_phase1_report(result: dict[str, Any]) -> str:
             f"| {row['fg']} | {row['planned_qty']} | {row['unmet_qty']} | {row['priority_score']:.2f} |"
         )
     lines.append("")
-    lines.append("## Top Material Shortages")
+    lines.append("## Material Shortages")
     lines.append("")
     lines.append("| Component | Required Qty | Available Qty | Shortage Qty |")
     lines.append("| --- | ---: | ---: | ---: |")
-    for shortage in shortages[:10]:
+    for shortage in shortages:
         lines.append(
             "| "
             f"{shortage['component']} | "
@@ -75,4 +75,3 @@ def build_phase1_report(result: dict[str, Any]) -> str:
     lines.append("These become Phase 2 and later layers on top of the current engine.")
     lines.append("")
     return "\n".join(lines)
-

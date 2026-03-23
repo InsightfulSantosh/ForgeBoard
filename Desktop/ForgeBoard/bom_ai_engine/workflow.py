@@ -114,6 +114,25 @@ def build_artifacts(
             ["component", "required_qty", "available_qty", "shortage_qty"],
             payload.get("aggregate_shortages", []),
         ),
+        "material_usage_ranking.csv": _rows_to_csv(
+            [
+                "component",
+                "used_in_fg_count",
+                "used_in_fgs",
+                "total_required_qty",
+                "planned_consumption_qty",
+                "available_qty",
+                "shortage_qty",
+                "usage_importance_score",
+            ],
+            [
+                {
+                    **row,
+                    "used_in_fgs": ",".join(row["used_in_fgs"]),
+                }
+                for row in payload.get("material_usage_ranking", [])
+            ],
+        ),
         "phase1_report.md": build_phase1_report(payload),
     }
 

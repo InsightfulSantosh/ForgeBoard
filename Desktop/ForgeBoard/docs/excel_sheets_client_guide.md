@@ -360,6 +360,8 @@ From the workbook inputs, ForgeBoard derives:
 - shortage quantities
 - max producible quantity
 - prioritized build recommendation
+- raw material importance ranking by usage
+- planner-facing blocker explanations
 
 This is why the workbook matters so much: it already contains the logic inputs needed for production planning.
 

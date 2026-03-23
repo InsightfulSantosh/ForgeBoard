@@ -9,7 +9,7 @@ The `Overview` tab is the planner's high-level scenario summary. It combines:
 - summary KPIs above the tabs
 - a finished-goods feasibility table
 - an aggregate shortages table
-- a short decision snapshot
+- an executive decision snapshot card
 
 The values come from the scenario payload produced by the planning engine:
 
@@ -26,6 +26,7 @@ The `Overview` experience is built from:
 - `result["production_plan"]`: planned allocation after priority ranking
 - `result["aggregate_shortages"]`: component shortages across total scenario demand
 - `build_summary_metrics(...)`: compact KPI rollup
+- `result["metadata"]`: workbook source and scenario settings used for the run
 
 ## Client-Friendly Explanation
 
@@ -62,7 +63,7 @@ The `Overview` experience is built from:
 
 ### Simple explanation of the Decision Snapshot
 
-`This is the quick management summary. It tells you the top recommended finished good, the main material problems, and which workbook the scenario came from.`
+`This is the executive summary card. It shows the current scenario status, the lead finished good, the overall build posture, the main material pressure points, and the workbook and demand settings used for the run.`
 
 ## Summary Band Metrics
 
@@ -253,6 +254,10 @@ Meaning:
 
 Composite ranking score used to sort finished goods before final shared-inventory allocation.
 
+Simple explanation:
+
+`Priority Score tells ForgeBoard which finished good should get more attention first. It does not look only at demand size. It also looks at how much of the FG can actually be covered now, how material-efficient it is, how constrained it is, and any business priority hints provided by the planner.`
+
 Signal definitions:
 
 - `coverage_signal`: FG coverage ratio
@@ -262,6 +267,50 @@ Signal definitions:
 - `business_priority`: optional hint from priority JSON, clipped to `0..1`
 - `margin_score`: optional hint from priority JSON, clipped to `0..1`
 - `service_level_weight`: optional hint from priority JSON, clipped to `0..1`
+
+How to read it:
+
+- higher score = ForgeBoard wants to consider this FG earlier
+- lower score = the FG is either less feasible, less efficient, less urgent, or less important by business rules
+
+Worked example:
+
+Suppose two finished goods are being compared:
+
+- `FG01`: high coverage, medium demand, good material efficiency
+- `FG02`: very high demand, but heavy shortages and poor coverage
+
+Then ForgeBoard may still rank `FG01` above `FG02` because:
+
+- `FG01` can be fulfilled more realistically right now
+- `FG01` may consume materials more efficiently
+- `FG02` may look commercially important, but it is harder to execute immediately
+
+Example interpretation:
+
+```text
+FG01
+- coverage_signal = strong
+- demand_signal = medium
+- efficiency_signal = strong
+- scarcity_signal = strong
+- business_priority = normal
+
+Result: higher Priority Score
+
+FG02
+- coverage_signal = weak
+- demand_signal = strong
+- efficiency_signal = weaker
+- scarcity_signal = weak
+- business_priority = normal
+
+Result: lower Priority Score
+```
+
+So the idea is:
+
+`Priority Score is not just who needs the most quantity. It is who is the best candidate to act on first under the current scenario.`
 
 ## Procurement Pressure Table
 
@@ -311,22 +360,33 @@ Material gap that must be addressed to fully support current demand.
 
 ## Decision Snapshot
 
-The card below the tables is a narrative summary of the scenario.
+The card below the tables is an executive-style summary of the scenario.
 
 It contains:
 
-- the top-ranked FG
-- the planned build quantity for that FG
-- the top three shortage components
-- the workbook source used for the run
+- a scenario-status badge
+- a headline summarizing the current production posture
+- a lead recommendation panel
+- a scenario posture panel
+- a procurement pressure panel
+- a material-pressure rail showing all shortage components
+- workbook basename and demand multiplier used for the run
 
 Summary logic:
 
 ```text
-Top-ranked FG = metrics["top_fg"]
-Lead planned quantity = production_plan[0]["planned_qty"] if a plan exists
-Top shortages = first 3 rows from aggregate_shortages
-Workbook source = result["metadata"]["workbook"]
+Status =
+  "No scenario data" if fg_count == 0
+  "Ready to execute" if blocked_fgs == 0
+  "Procurement intervention needed" if fulfillable_fgs == 0
+  "Partial execution possible" otherwise
+
+Lead recommendation = metrics["top_fg"] + production_plan[0]["planned_qty"] if a plan exists
+Scenario posture = total_planned_qty versus total_net_demand, plus blocked_fgs
+Procurement pressure = metrics["top_shortage_component"] + total_shortage_qty
+Material pressure rail = all rows from aggregate_shortages
+Workbook footer = basename(result["metadata"]["workbook"])
+Demand multiplier footer = result["metadata"]["demand_multiplier"]
 ```
 
 ## Important Interpretation Note
@@ -346,4 +406,4 @@ For planners, the fastest reading order is:
 2. Check `Lead FG` and `Planned Build`.
 3. Review `Production posture` for FG-by-FG feasibility.
 4. Review `Procurement pressure` for the biggest material gaps.
-5. Read the `Decision snapshot` for a compact narrative summary.
+5. Read the `Decision snapshot` for the executive summary of status, lead FG, and procurement pressure.

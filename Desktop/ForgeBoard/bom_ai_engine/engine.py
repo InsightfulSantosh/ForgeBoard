@@ -11,6 +11,7 @@ from .models import (
     ComponentShortage,
     DemandLine,
     FGAnalysis,
+    MaterialUsage,
     ProductionAllocation,
     ScenarioResult,
     WorkbookData,
@@ -113,6 +114,7 @@ class ProductionPlanner:
         scored_analyses = self._score_analyses(analyses, data.bom, priority_hints or {})
         production_plan, remaining_inventory = self._allocate(scored_analyses, data.bom, data.inventory)
         aggregate_shortages = self._aggregate_shortages(data)
+        material_usage_ranking = self._build_material_usage_ranking(data, production_plan)
 
         return ScenarioResult(
             analyses=scored_analyses,
@@ -120,6 +122,7 @@ class ProductionPlanner:
             aggregate_shortages=aggregate_shortages,
             remaining_inventory=remaining_inventory,
             metadata=metadata or {},
+            material_usage_ranking=material_usage_ranking,
         )
 
     def _analyse_fg(
@@ -343,6 +346,79 @@ class ProductionPlanner:
                 )
 
         return sorted(shortages, key=lambda item: item.shortage_qty, reverse=True)
+
+    def _build_material_usage_ranking(
+        self,
+        data: WorkbookData,
+        production_plan: list[ProductionAllocation],
+    ) -> list[MaterialUsage]:
+        total_requirements: dict[str, float] = defaultdict(float)
+        used_in_fgs: dict[str, set[str]] = defaultdict(set)
+        planned_consumption: dict[str, float] = defaultdict(float)
+
+        for demand in data.demands:
+            for component, qty_per_fg in data.bom.get(demand.fg, {}).items():
+                required_qty = qty_per_fg * demand.net_demand_qty
+                if required_qty <= 0:
+                    continue
+                total_requirements[component] += required_qty
+                used_in_fgs[component].add(demand.fg)
+
+        for allocation in production_plan:
+            for component, consumed_qty in allocation.consumed_components.items():
+                planned_consumption[component] += consumed_qty
+
+        if not total_requirements:
+            return []
+
+        fg_count_values = [len(used_in_fgs[component]) for component in total_requirements]
+        required_values = [total_requirements[component] for component in total_requirements]
+        planned_values = [planned_consumption.get(component, 0.0) for component in total_requirements]
+
+        fg_count_scale = _build_scale(fg_count_values)
+        required_scale = _build_scale(required_values)
+        planned_scale = _build_scale(planned_values)
+
+        ranking: list[MaterialUsage] = []
+        for component, total_required_qty in total_requirements.items():
+            used_count = len(used_in_fgs[component])
+            available_qty = data.inventory.get(component, 0.0)
+            planned_qty = planned_consumption.get(component, 0.0)
+            shortage_qty = max(total_required_qty - available_qty, 0.0)
+            usage_importance_score = round(
+                (
+                    (fg_count_scale(used_count) * 0.45)
+                    + (required_scale(total_required_qty) * 0.40)
+                    + (planned_scale(planned_qty) * 0.15)
+                )
+                * 100.0,
+                2,
+            )
+
+            ranking.append(
+                MaterialUsage(
+                    component=component,
+                    used_in_fg_count=used_count,
+                    used_in_fgs=sorted(used_in_fgs[component]),
+                    total_required_qty=total_required_qty,
+                    planned_consumption_qty=planned_qty,
+                    available_qty=available_qty,
+                    shortage_qty=shortage_qty,
+                    usage_importance_score=usage_importance_score,
+                )
+            )
+
+        return sorted(
+            ranking,
+            key=lambda item: (
+                -item.usage_importance_score,
+                -item.used_in_fg_count,
+                -item.total_required_qty,
+                -item.planned_consumption_qty,
+                -item.shortage_qty,
+                item.component,
+            ),
+        )
 
 
 def _extract_table(

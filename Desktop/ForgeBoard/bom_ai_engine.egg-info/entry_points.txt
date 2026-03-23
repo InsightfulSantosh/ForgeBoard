@@ -1,3 +1,0 @@
-[console_scripts]
-forgeboard = bom_ai_engine.cli:main
-bom-ai-engine = bom_ai_engine.cli:main

@@ -40,9 +40,12 @@ The implementation in this repo provides ForgeBoard's core planning layer:
 For each scenario, ForgeBoard can produce:
 
 - FG-level feasibility analysis
+- FG fulfillment and blocker diagnosis
 - prioritized production plan
 - aggregate material shortage list
+- raw material importance ranking by use
 - planner-friendly markdown summary
+- CSV and JSON handoff artifacts
 - conversational answers to planning questions
 
 This makes the solution usable both as a backend engine and as a planner-facing tool.
@@ -77,10 +80,9 @@ This confirms the client problem is a planning and optimization problem, not a d
 
 ForgeBoard can be used in multiple ways depending on the client environment:
 
-- CLI batch run for analysts or scheduled jobs
 - Streamlit interface for planners
 - API or workflow integration behind ERP exports
-- markdown and CSV artifact handoff for procurement and operations teams
+- markdown, CSV, and JSON artifact handoff for procurement and operations teams
 
 ## Workflow Recommendation
 
@@ -91,8 +93,10 @@ Recommended daily workflow:
 3. Publish:
    - producible FG quantities
    - blocking components
+   - fulfillment summary by FG
    - prioritized production plan
-   - procurement shortlist
+   - procurement ranking
+   - raw material importance ranking
    - scenario report and downloadable artifacts
 4. Optionally expose the results through:
    - API

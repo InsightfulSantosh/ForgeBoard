@@ -11,10 +11,6 @@ dependencies = [
   "python-dotenv>=1.0.1"
 ]
 
-[project.scripts]
-forgeboard = "bom_ai_engine.cli:main"
-bom-ai-engine = "bom_ai_engine.cli:main"
-
 [project.optional-dependencies]
 ui = [
   "streamlit>=1.55.0"
