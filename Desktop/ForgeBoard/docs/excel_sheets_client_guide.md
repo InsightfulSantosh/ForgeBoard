@@ -1,5 +1,7 @@
 # Excel Sheets Client Guide
 
+This guide explains the workbook inputs that `ForgeBoard` expects and how to describe them to a client.
+
 ## Purpose
 
 This note explains each sheet in the client workbook in simple business language.
@@ -14,6 +16,8 @@ Sheets found in the workbook:
 - `BOM Explode`
 - `On-hand Qty`
 - `Pivot-BOM Explode`
+
+In ForgeBoard, the first three sheets are the core calculation inputs. The pivot sheet is useful as a validation or reporting view.
 
 ---
 
@@ -317,7 +321,7 @@ Simple client version:
 
 ## 6. Which Sheets the Engine Actually Uses
 
-The planning engine primarily uses:
+ForgeBoard primarily uses:
 
 - `Demand`
 - `BOM Explode`
@@ -333,7 +337,35 @@ The `Pivot-BOM Explode` sheet is helpful for checking or presenting the data, bu
 
 ---
 
-## 7. One-Line Explanation for Each Sheet
+## 7. Minimum Workbook Expectations
+
+For the cleanest ForgeBoard run, the workbook should keep:
+
+- consistent FG codes between `Demand` and `BOM Explode`
+- consistent component codes between `BOM Explode` and `On-hand Qty`
+- a usable summary inventory section with `Item Code` and `On-hand Qty`
+- numeric demand and quantity fields without text placeholders
+
+If the workbook structure changes materially, the ingestion logic may need a small mapping update.
+
+---
+
+## 8. What ForgeBoard Derives From These Sheets
+
+From the workbook inputs, ForgeBoard derives:
+
+- net demand by FG
+- total component requirement
+- available inventory by component
+- shortage quantities
+- max producible quantity
+- prioritized build recommendation
+
+This is why the workbook matters so much: it already contains the logic inputs needed for production planning.
+
+---
+
+## 9. One-Line Explanation for Each Sheet
 
 - `Demand`: what the business wants to produce
 - `BOM Explode`: what materials are needed to produce it
@@ -342,8 +374,8 @@ The `Pivot-BOM Explode` sheet is helpful for checking or presenting the data, bu
 
 ---
 
-## 8. Final Client Message
+## 10. Final Client Message
 
 You can close with this:
 
-`Your workbook already contains the key planning data. Our system turns those sheets into a production feasibility engine that shows what can be built, what is blocked, and what action should be taken next.`
+`Your workbook already contains the key planning data. ForgeBoard turns those sheets into a production feasibility engine that shows what can be built, what is blocked, and what action should be taken next.`

@@ -1,8 +1,10 @@
 # Client Presentation Guide
 
+Use `ForgeBoard` as the product name throughout the presentation. If needed, describe it as `ForgeBoard, an AI-assisted Production Feasibility and Planning Engine`.
+
 ## One-Line Positioning
 
-`This is an AI-assisted Production Feasibility and Planning Engine.`
+`ForgeBoard is an AI-assisted Production Feasibility and Planning Engine.`
 
 It helps the planning team answer:
 
@@ -41,6 +43,20 @@ Simple explanation for client:
 
 `The engine converts raw planning data into production decisions.`
 
+## 2A. What the User Sees
+
+When demoing ForgeBoard, explain that the experience is organized around five working views:
+
+- `Overview`: overall production posture and procurement pressure
+- `Finished Goods`: FG-by-FG feasibility, blockers, and shortage lines
+- `Materials`: aggregate shortages and buy-first shortlist
+- `Assistant`: planner Q&A on top of the current scenario
+- `Downloads`: CSV, JSON, and markdown artifacts for handoff
+
+Useful line for the client:
+
+`ForgeBoard is not only a calculator. It is a planner workspace with scenario controls, decision views, and exportable outputs.`
+
 ---
 
 ## 3. What Is AI and What Is Not
@@ -78,7 +94,7 @@ Explain it like this:
 
 ## 4. Sidebar Explanation
 
-The sidebar is the planner control panel. It lets the user create and test planning scenarios without editing Excel manually.
+The ForgeBoard sidebar is the planner control panel. It lets the user create and test planning scenarios without editing Excel manually.
 
 ### 4.1 Workbook source
 
@@ -228,6 +244,24 @@ How to explain:
 
 `One click runs the complete workflow: demand explosion, shortage detection, production feasibility, prioritization, and assistant responses.`
 
+### 4.10 Downloads
+
+Purpose:
+
+Export the scenario outputs for other teams.
+
+How to explain:
+
+`After the run, ForgeBoard produces files that planning, procurement, and management can reuse without going back to the workbook.`
+
+Typical outputs:
+
+- scenario summary JSON
+- FG analysis CSV
+- production plan CSV
+- material shortages CSV
+- markdown report
+
 ---
 
 ## 4A. Finished Goods Tab Explanation
@@ -365,6 +399,7 @@ What to point out:
 - blocked finished goods
 - top shortages
 - recommended build quantities
+- downloadable planning artifacts
 
 ### Step 2: Show demand simulation
 
@@ -438,6 +473,7 @@ What to point out:
 - faster planner understanding
 - less dependency on spreadsheet experts
 - easier management communication
+- same scenario can be exported immediately after discussion
 
 ---
 
@@ -451,6 +487,7 @@ Use these talking points:
 - reduced manual Excel effort
 - more explainable planning decisions
 - foundation for future forecasting and AI recommendations
+- a repeatable planning workflow instead of ad hoc workbook interpretation
 
 Short version:
 
@@ -503,13 +540,13 @@ Optimization:
 
 Answer:
 
-`No. ERP remains the system of record. This solution acts as a planning intelligence layer on top of ERP exports or data feeds.`
+`No. ERP remains the system of record. ForgeBoard acts as a planning intelligence layer on top of ERP exports or data feeds.`
 
 ### Is this just a dashboard?
 
 Answer:
 
-`No. A dashboard only shows data. This system calculates feasibility, detects blockers, simulates scenarios, and supports planning decisions.`
+`No. A dashboard only shows data. ForgeBoard calculates feasibility, detects blockers, simulates scenarios, and supports planning decisions.`
 
 ### Where exactly is AI used?
 
@@ -535,7 +572,7 @@ Answer:
 
 You can close with this:
 
-`Today, planners often rely on manual Excel work to understand shortages and production feasibility. This solution converts that spreadsheet workflow into a decision engine with AI-assisted interaction. It gives the team faster answers, clearer priorities, and a foundation for predictive planning.`
+`Today, planners often rely on manual Excel work to understand shortages and production feasibility. ForgeBoard converts that spreadsheet workflow into a decision engine with AI-assisted interaction. It gives the team faster answers, clearer priorities, and a foundation for predictive planning.`
 
 ---
 

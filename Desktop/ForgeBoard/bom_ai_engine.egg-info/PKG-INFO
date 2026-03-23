@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
-Name: bom-ai-engine
+Name: forgeboard
 Version: 0.1.0
-Summary: AI-assisted production feasibility engine for BOM and inventory workbooks
+Summary: ForgeBoard AI-assisted production feasibility engine for BOM and inventory workbooks
 Requires-Python: >=3.10
 Requires-Dist: python-dotenv>=1.0.1
 Provides-Extra: ui

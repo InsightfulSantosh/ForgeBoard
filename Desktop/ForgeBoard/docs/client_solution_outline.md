@@ -1,4 +1,6 @@
-# Client Solution Outline
+# ForgeBoard Client Solution Outline
+
+`ForgeBoard` is the product name for this production-feasibility solution.
 
 ## Problem Framing
 
@@ -12,9 +14,11 @@ The business question is:
 
 `Given demand + BOM + inventory, what can we manufacture now, what is blocking us, and what should we prioritize next?`
 
+In ForgeBoard, that question is answered through a planning engine plus an optional AI explanation layer.
+
 ## Proposed Engine
 
-The implementation in this repo provides the core planning layer:
+The implementation in this repo provides ForgeBoard's core planning layer:
 
 1. `BOM Intelligence`
    Converts FG demand into component-level material requirements.
@@ -30,6 +34,18 @@ The implementation in this repo provides the core planning layer:
 
 5. `What-if Simulation`
    Supports scenario runs such as demand increase and simulated procurement.
+
+## What ForgeBoard Delivers
+
+For each scenario, ForgeBoard can produce:
+
+- FG-level feasibility analysis
+- prioritized production plan
+- aggregate material shortage list
+- planner-friendly markdown summary
+- conversational answers to planning questions
+
+This makes the solution usable both as a backend engine and as a planner-facing tool.
 
 ## Sample Workbook Findings
 
@@ -57,17 +73,27 @@ Largest aggregate shortages in the sample include:
 
 This confirms the client problem is a planning and optimization problem, not a dashboard problem.
 
+## How Users Can Consume It
+
+ForgeBoard can be used in multiple ways depending on the client environment:
+
+- CLI batch run for analysts or scheduled jobs
+- Streamlit interface for planners
+- API or workflow integration behind ERP exports
+- markdown and CSV artifact handoff for procurement and operations teams
+
 ## Workflow Recommendation
 
 Recommended daily workflow:
 
 1. Upload or refresh the latest workbook extract.
-2. Run the engine automatically.
+2. Run ForgeBoard automatically.
 3. Publish:
    - producible FG quantities
    - blocking components
    - prioritized production plan
    - procurement shortlist
+   - scenario report and downloadable artifacts
 4. Optionally expose the results through:
    - API
    - dashboard
@@ -77,7 +103,7 @@ Recommended daily workflow:
 
 You can position this as:
 
-`AI-powered Production Feasibility Engine`
+`ForgeBoard: AI-powered Production Feasibility Engine`
 
 with these outcomes:
 
@@ -85,3 +111,4 @@ with these outcomes:
 - shortage visibility without manual pivot work
 - scenario simulation before procurement
 - explainable prioritization instead of spreadsheet guesswork
+- a cleaner path from Excel export to repeatable planning workflow
