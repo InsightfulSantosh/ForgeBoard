@@ -55,6 +55,18 @@ The tab uses:
 - `Available`: current stock available
 - `Shortage`: missing quantity
 
+### Simple explanation of each Top Shortage Lines column
+
+- `Component`: the material or part causing pressure for this finished good
+- `Qty / FG`: quantity of that material needed to produce one unit of the selected FG
+- `Required`: total quantity needed for the full current net demand
+- `Available`: stock currently available for that material
+- `Shortage`: how much more material is needed to fully support the selected FG demand
+
+Simple client example:
+
+`If one finished good needs 2 units of a component, demand is 1000, and stock available is 500, then required quantity is 2000 and shortage is 1500.`
+
 ## Tab Layout
 
 The tab renders one selected FG from the scenario analysis and shows:
@@ -168,7 +180,7 @@ Difference from limiting components:
 
 ## Top Shortage Lines Table
 
-The shortage table is built from the selected FG's `shortages` list and shows up to 12 rows.
+The shortage table is built from the selected FG's `shortages` list and shows up to 50 rows.
 
 ### Component
 

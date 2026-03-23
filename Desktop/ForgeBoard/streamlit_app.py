@@ -247,11 +247,16 @@ def _render_header() -> None:
 
 def _render_summary_band(metrics: dict) -> None:
     cols = st.columns(5)
-    cols[0].metric("Finished Goods", metrics["fg_count"])
-    cols[1].metric("Net Demand", metrics["total_net_demand"])
-    cols[2].metric("Planned Build", metrics["total_planned_qty"])
-    cols[3].metric("Blocked FGs", metrics["blocked_fgs"])
-    cols[4].metric("Top Shortage", metrics["top_shortage_component"] or "None")
+    cards = [
+        ("Finished Goods", metrics["fg_count"], "primary"),
+        ("Net Demand", metrics["total_net_demand"], "primary"),
+        ("Planned Build", metrics["total_planned_qty"], "primary"),
+        ("Blocked FGs", metrics["blocked_fgs"], "alert"),
+        ("Top Shortage", metrics["top_shortage_component"] or "None", "warning"),
+    ]
+    for col, (label, value, tone) in zip(cols, cards):
+        with col:
+            st.markdown(_summary_metric_card(label, value, tone), unsafe_allow_html=True)
 
     st.markdown(
         f"""
@@ -352,7 +357,7 @@ def _render_finished_goods(result: dict) -> None:
                         "Available": round(row["available_qty"], 2),
                         "Shortage": round(row["shortage_qty"], 2),
                     }
-                    for row in fg.get("shortages", [])[:12]
+                    for row in fg.get("shortages", [])[:50]
                 ],
                 use_container_width=True,
                 hide_index=True,
@@ -467,6 +472,15 @@ def result_to_markdown_preview(result: dict, plan: list[dict], metrics: dict) ->
         f"<div class='insight-body'>{lead_line}</div>"
         f"<div class='insight-body'>Current highest procurement pressure is on {shortage_line}</div>"
         f"<div class='insight-foot'>Workbook source: {html.escape(result['metadata']['workbook'])}</div>"
+        "</div>"
+    )
+
+
+def _summary_metric_card(label: str, value: object, tone: str = "primary") -> str:
+    return (
+        f"<div class='summary-metric-card is-{html.escape(tone)}'>"
+        f"<div class='summary-metric-label'>{html.escape(str(label))}</div>"
+        f"<div class='summary-metric-value'>{html.escape(str(value))}</div>"
         "</div>"
     )
 
@@ -622,6 +636,42 @@ def _apply_theme() -> None:
             margin-bottom: 0.25rem;
             font-weight: 700;
           }
+          .summary-metric-card {
+            min-height: 7rem;
+            padding: 0.95rem 1rem;
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--blue);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.65rem;
+          }
+          .summary-metric-card.is-alert {
+            border-top-color: var(--rose-ink);
+          }
+          .summary-metric-card.is-warning {
+            border-top-color: var(--amber-ink);
+          }
+          .summary-metric-label {
+            color: var(--ink-2);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.2;
+          }
+          .summary-metric-value {
+            color: var(--ink-1);
+            font-size: clamp(1.2rem, 0.95rem + 1vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+          }
           [data-testid="stMetric"] {
             border: 1px solid var(--line);
             border-top: 4px solid var(--blue);
@@ -737,20 +787,77 @@ def _apply_theme() -> None:
             opacity: 0.9;
           }
           [data-baseweb="tab-list"] {
-            gap: 0.5rem;
-            margin-bottom: 0.6rem;
+            gap: 0.45rem;
+            margin-bottom: 0.9rem;
+            padding: 0.45rem;
+            border: 1px solid rgba(15, 23, 42, 0.10);
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(236, 242, 248, 0.96));
+            box-shadow:
+              inset 0 1px 0 rgba(255, 255, 255, 0.72),
+              0 12px 28px rgba(15, 23, 42, 0.08);
+            overflow-x: auto;
+            scrollbar-width: none;
+          }
+          [data-baseweb="tab-list"]::-webkit-scrollbar {
+            display: none;
           }
           [data-baseweb="tab"] {
-            background: #ffffff;
-            border: 1px solid rgba(15, 23, 42, 0.16);
-            border-radius: 999px;
+            min-height: 3rem;
+            padding: 0.72rem 1.05rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 16px;
+            color: var(--ink-2);
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            transition:
+              transform 160ms ease,
+              box-shadow 160ms ease,
+              background 160ms ease,
+              border-color 160ms ease,
+              color 160ms ease;
+            box-shadow:
+              inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              0 1px 2px rgba(15, 23, 42, 0.05);
+          }
+          [data-baseweb="tab"]:hover {
+            transform: translateY(-1px);
             color: var(--ink-1);
-            font-weight: 700;
+            border-color: rgba(29, 78, 216, 0.22);
+            box-shadow:
+              inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              0 8px 20px rgba(15, 23, 42, 0.08);
+          }
+          [data-baseweb="tab"]:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, 0.18);
+            outline-offset: 2px;
           }
           [aria-selected="true"][data-baseweb="tab"] {
-            background: var(--navy);
-            color: white;
-            border-color: var(--navy);
+            background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+            color: #ffffff;
+            border-color: rgba(15, 23, 42, 0.16);
+            box-shadow:
+              inset 0 1px 0 rgba(255, 255, 255, 0.16),
+              0 14px 28px rgba(29, 78, 216, 0.22);
+          }
+          [aria-selected="true"][data-baseweb="tab"]:hover {
+            transform: translateY(-1px);
+            color: #ffffff;
+          }
+          [data-baseweb="tab-panel"] {
+            padding-top: 0.3rem;
+          }
+          @media (max-width: 900px) {
+            [data-baseweb="tab-list"] {
+              border-radius: 18px;
+            }
+            [data-baseweb="tab"] {
+              min-height: 2.7rem;
+              padding: 0.65rem 0.9rem;
+              font-size: 0.9rem;
+            }
           }
           .badge-row {
             display: flex;
