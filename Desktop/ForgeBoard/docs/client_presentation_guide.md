@@ -244,7 +244,7 @@ How to explain:
 
 `One click runs the complete workflow: demand explosion, shortage detection, production feasibility, prioritization, and assistant responses.`
 
-### 4.10 Downloads
+### 4.10 Downloads Tab
 
 Purpose:
 
@@ -252,7 +252,7 @@ Export the scenario outputs for other teams.
 
 How to explain:
 
-`After the run, ForgeBoard produces files that planning, procurement, and management can reuse without going back to the workbook.`
+`After the run, the Downloads tab gives planning, procurement, and management files they can reuse without going back to the workbook.`
 
 Typical outputs:
 

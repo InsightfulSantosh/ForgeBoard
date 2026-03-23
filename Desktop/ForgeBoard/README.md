@@ -197,3 +197,4 @@ The Streamlit app loads `.env` automatically. Gemini uses `GOOGLE_API_KEY`. Forg
 - `docs/overview_tab_guide.md`
 - `docs/finished_goods_tab_guide.md`
 - `docs/materials_tab_guide.md`
+- `docs/sidebar_guide.md`
