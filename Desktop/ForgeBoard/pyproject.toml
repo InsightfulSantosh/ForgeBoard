@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forgeboard"
+version = "0.1.0"
+description = "ForgeBoard AI-assisted production feasibility engine for BOM and inventory workbooks"
+requires-python = ">=3.10"
+dependencies = [
+  "python-dotenv>=1.0.1"
+]
+
+[project.scripts]
+forgeboard = "bom_ai_engine.cli:main"
+bom-ai-engine = "bom_ai_engine.cli:main"
+
+[project.optional-dependencies]
+ui = [
+  "streamlit>=1.55.0"
+]
+llm = [
+  "langchain>=1.0.0",
+  "langchain-google-genai>=3.0.0"
+]
+llm-gemini = [
+  "langchain>=1.0.0",
+  "langchain-google-genai>=3.0.0"
+]
+
+[tool.setuptools]
+packages = ["bom_ai_engine"]
+py-modules = ["streamlit_app"]

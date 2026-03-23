@@ -1,0 +1,12 @@
+python-dotenv>=1.0.1
+
+[llm]
+langchain>=1.0.0
+langchain-google-genai>=3.0.0
+
+[llm-gemini]
+langchain>=1.0.0
+langchain-google-genai>=3.0.0
+
+[ui]
+streamlit>=1.55.0

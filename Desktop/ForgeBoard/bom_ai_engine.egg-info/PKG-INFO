@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: bom-ai-engine
+Version: 0.1.0
+Summary: AI-assisted production feasibility engine for BOM and inventory workbooks
+Requires-Python: >=3.10
+Requires-Dist: python-dotenv>=1.0.1
+Provides-Extra: ui
+Requires-Dist: streamlit>=1.55.0; extra == "ui"
+Provides-Extra: llm
+Requires-Dist: langchain>=1.0.0; extra == "llm"
+Requires-Dist: langchain-google-genai>=3.0.0; extra == "llm"
+Provides-Extra: llm-gemini
+Requires-Dist: langchain>=1.0.0; extra == "llm-gemini"
+Requires-Dist: langchain-google-genai>=3.0.0; extra == "llm-gemini"

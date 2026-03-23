@@ -1,0 +1,2 @@
+[console_scripts]
+bom-ai-engine = bom_ai_engine.cli:main

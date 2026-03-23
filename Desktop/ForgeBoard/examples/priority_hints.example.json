@@ -1,0 +1,23 @@
+{
+  "FG01": {
+    "business_priority": 0.9,
+    "margin_score": 0.7,
+    "service_level_weight": 0.8
+  },
+  "FG02": {
+    "business_priority": 0.7,
+    "margin_score": 0.8,
+    "service_level_weight": 0.6
+  },
+  "FG03": {
+    "business_priority": 0.6,
+    "margin_score": 0.5,
+    "service_level_weight": 0.7
+  },
+  "FG04": {
+    "business_priority": 0.5,
+    "margin_score": 0.9,
+    "service_level_weight": 0.5
+  }
+}
+
