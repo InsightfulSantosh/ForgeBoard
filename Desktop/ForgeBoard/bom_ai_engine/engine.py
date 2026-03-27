@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .models import (
     AggregateShortage,
+    ComponentPosition,
     ComponentShortage,
     DemandLine,
     FGAnalysis,
@@ -144,9 +145,11 @@ class ProductionPlanner:
                 limiting_components=[],
                 blocking_components=["NO_BOM_FOUND"],
                 shortages=[],
+                component_positions=[],
             )
 
         component_limits: list[tuple[str, float]] = []
+        component_positions: list[ComponentPosition] = []
         shortages: list[ComponentShortage] = []
 
         for component, qty_per_fg in requirements.items():
@@ -156,6 +159,19 @@ class ProductionPlanner:
 
             required_qty = demand.net_demand_qty * qty_per_fg
             shortage_qty = max(required_qty - available_qty, 0.0)
+            surplus_qty = max(available_qty - required_qty, 0.0)
+            component_positions.append(
+                ComponentPosition(
+                    component=component,
+                    qty_per_fg=qty_per_fg,
+                    required_qty=required_qty,
+                    available_qty=available_qty,
+                    shortage_qty=shortage_qty,
+                    surplus_qty=surplus_qty,
+                    possible_fg_units=_whole_units(possible_units),
+                    enough_stock=shortage_qty <= 1e-9,
+                )
+            )
             if shortage_qty > 1e-9:
                 shortages.append(
                     ComponentShortage(
@@ -197,6 +213,7 @@ class ProductionPlanner:
             limiting_components=limiting_components,
             blocking_components=blocking_components,
             shortages=sorted(shortages, key=lambda item: item.shortage_qty, reverse=True),
+            component_positions=sorted(component_positions, key=lambda item: item.component),
         )
 
     def _score_analyses(

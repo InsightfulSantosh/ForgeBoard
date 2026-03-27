@@ -368,7 +368,7 @@ def _render_overview(result: dict, metrics: dict) -> None:
                         "Net Demand": int(round(row["net_demand_qty"])),
                         "Max Producible": row["max_producible_qty"],
                         "Recommended Build": row["recommended_build_qty"],
-                        "Coverage": f"{row['coverage_ratio']:.0%}",
+                        "Fulfillment %": f"{row['coverage_ratio']:.0%}",
                         "Priority Score": row["priority_score"],
                     }
                     for row in analyses
@@ -403,6 +403,22 @@ def _render_finished_goods(result: dict) -> None:
     fg_lookup = {row["fg"]: row for row in analyses}
     selected_fg = st.selectbox("Choose finished good", list(fg_lookup))
     fg = fg_lookup[selected_fg]
+    component_positions = fg.get("component_positions", [])
+    enough_components = sorted(
+        [
+            {
+                "Component": row["component"],
+                "Qty / FG": round(row["qty_per_fg"], 4),
+                "Required": round(row["required_qty"], 2),
+                "Available": round(row["available_qty"], 2),
+                "Surplus": round(row["surplus_qty"], 2),
+                "Possible FG Units": row["possible_fg_units"],
+            }
+            for row in component_positions
+            if bool(row.get("enough_stock"))
+        ],
+        key=lambda item: (-float(item["Surplus"]), item["Component"]),
+    )
 
     stat_cols = st.columns(5)
     stat_cols[0].metric("FG On-hand", int(round(fg.get("fg_on_hand_qty", 0))))
@@ -440,10 +456,43 @@ def _render_finished_goods(result: dict) -> None:
                 hide_index=True,
             )
 
+    with st.container(border=True):
+        st.markdown("#### Components available in enough quantity")
+        if fg.get("blocking_components") == ["NO_BOM_FOUND"] and not component_positions:
+            st.warning("No BOM data was found for this finished good, so covered components cannot be derived.")
+        elif not component_positions:
+            st.info("Rerun the scenario to populate covered component rows for this finished good.")
+        elif enough_components:
+            st.caption(
+                "These components already have enough available stock to cover the full current net demand for this finished good."
+            )
+            st.dataframe(
+                enough_components,
+                use_container_width=True,
+                hide_index=True,
+            )
+        else:
+            st.info("No fully covered component rows were identified for this finished good.")
+
 
 def _render_materials(result: dict) -> None:
     shortages = result.get("aggregate_shortages", [])
     usage_ranking = result.get("material_usage_ranking", [])
+    enough_materials = [
+        {
+            "Component": row["component"],
+            "Used In FG Count": row["used_in_fg_count"],
+            "Used In FGs": ", ".join(row["used_in_fgs"]),
+            "Total Required Qty": round(row["total_required_qty"], 2),
+            "Available Qty": round(row["available_qty"], 2),
+            "Surplus Qty": round(
+                max(float(row["available_qty"]) - float(row["total_required_qty"]), 0.0),
+                2,
+            ),
+        }
+        for row in usage_ranking
+        if float(row.get("available_qty", 0.0)) + 1e-9 >= float(row.get("total_required_qty", 0.0))
+    ]
 
     left, right = st.columns([1.45, 0.9])
     with left:
@@ -502,6 +551,20 @@ def _render_materials(result: dict) -> None:
             )
         else:
             st.info("No material-usage ranking is available for the current scenario.")
+
+    with st.container(border=True):
+        st.markdown("### Materials available in enough quantity")
+        st.caption(
+            "These materials already have enough available stock to cover the full current scenario requirement."
+        )
+        if enough_materials:
+            st.dataframe(
+                enough_materials,
+                use_container_width=True,
+                hide_index=True,
+            )
+        else:
+            st.info("No fully covered materials were identified in the current scenario.")
 
 
 def _render_assistant(

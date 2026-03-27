@@ -105,9 +105,10 @@ The app supports:
 - sample workbook mode
 - file upload for new client workbooks
 - demand multiplier and procurement scenario controls
-- finished-good fulfillment summary and explicit blocker-reason view
+- finished-good fulfillment summary, explicit blocker-reason view, and covered-components table
 - full finished-good shortage tables and aggregate material tables
 - procurement ranking and raw material importance-by-use ranking
+- a table of materials already available in enough quantity for the scenario
 - priority hint JSON input
 - planner Q&A using the Phase 2 assistant
 - grounded Gemini through LangChain for optional LLM responses
@@ -192,6 +193,8 @@ The Streamlit app loads `.env` automatically. Gemini uses `GOOGLE_API_KEY`. Forg
 ## Related Docs
 
 - `docs/client_solution_outline.md`
+- `docs/forgeboard_solution_blueprint.md`
+- `docs/cs_electrics_pitch_deck.md`
 - `docs/client_presentation_guide.md`
 - `docs/excel_sheets_client_guide.md`
 - `docs/overview_tab_guide.md`

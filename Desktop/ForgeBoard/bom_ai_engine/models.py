@@ -23,6 +23,18 @@ class ComponentShortage:
 
 
 @dataclass(frozen=True)
+class ComponentPosition:
+    component: str
+    qty_per_fg: float
+    required_qty: float
+    available_qty: float
+    shortage_qty: float
+    surplus_qty: float
+    possible_fg_units: int
+    enough_stock: bool
+
+
+@dataclass(frozen=True)
 class FGAnalysis:
     fg: str
     demand_qty: float
@@ -35,6 +47,7 @@ class FGAnalysis:
     limiting_components: list[str]
     blocking_components: list[str]
     shortages: list[ComponentShortage] = field(default_factory=list)
+    component_positions: list[ComponentPosition] = field(default_factory=list)
     priority_score: float = 0.0
     priority_reason: str = ""
 

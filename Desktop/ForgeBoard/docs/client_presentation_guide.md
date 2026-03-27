@@ -405,6 +405,23 @@ Client explanation:
 
 `This helps the planner understand not only which parts are blocking production, but also how large the shortage is for each part.`
 
+### Components available in enough quantity
+
+Meaning:
+
+`This section shows the raw materials that already have enough available stock to cover the selected finished good's current net demand.`
+
+How to explain:
+
+`This is the safe-material view for one finished good. It helps the planner separate covered components from shortage components, so attention stays on the real blockers.`
+
+Useful columns to mention:
+
+- `Required`
+- `Available`
+- `Surplus`
+- `Possible FG Units`
+
 ---
 
 ## 4B. Materials Tab Explanation
@@ -448,6 +465,22 @@ Useful columns to mention:
 - `Total Required Qty`
 - `Planned Consumption Qty`
 - `Usage Importance Score`
+
+### Materials available in enough quantity
+
+Meaning:
+
+`This table shows the raw materials that already have enough available stock to support the full current scenario requirement.`
+
+How to explain:
+
+`This is the safe-material view. It helps the planner see which raw materials do not need urgent action because the current stock is already enough for the scenario.`
+
+Useful columns to mention:
+
+- `Total Required Qty`
+- `Available Qty`
+- `Surplus Qty`
 
 ---
 

@@ -47,10 +47,11 @@ The `Overview` experience is built from:
 
 `This table shows each finished good one by one and tells the planner how strong or weak its current production position is.`
 
+- `FG On-hand`: stock of that finished good already available
 - `Net Demand`: how much still needs to be produced
 - `Max Producible`: the maximum the plant could make with today's available materials
 - `Recommended Build`: what ForgeBoard suggests building now
-- `Coverage`: how much of the open demand can be covered immediately
+- `Fulfillment %`: what percentage of the open demand can be covered immediately
 - `Priority Score`: how strongly the system recommends focusing on that item
 
 ### Simple explanation of the Procurement Pressure table
@@ -215,18 +216,18 @@ Meaning:
 
 How many units ForgeBoard recommends building for that FG before shared-inventory allocation is applied across the whole plan.
 
-### Coverage
+### Fulfillment %
 
 Formula:
 
 ```text
-Coverage = Recommended Build / floor(Net Demand)
+Fulfillment % = Recommended Build / floor(Net Demand)
 ```
 
 Special case:
 
 ```text
-If Net Demand == 0, Coverage = 1.0
+If Net Demand == 0, Fulfillment % = 1.0
 ```
 
 Meaning:

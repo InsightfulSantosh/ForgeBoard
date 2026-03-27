@@ -11,6 +11,7 @@ It combines:
 - aggregate shortages
 - procurement ranking
 - raw material importance by use
+- materials available in enough quantity
 
 ## Data Sources
 
@@ -22,7 +23,7 @@ The tab is built from:
 
 ## Client-Friendly Explanation
 
-`The Materials tab is the raw-material control view. It tells the planner which materials are short, which materials procurement should pay attention to first, and which materials are strategically important because they are used across many finished goods or large total demand.`
+`The Materials tab is the raw-material control view. It tells the planner which materials are short, which materials procurement should pay attention to first, which materials are strategically important because they are used across many finished goods or large total demand, and which materials are already safely covered.`
 
 ### Simple explanation of Aggregate Shortages
 
@@ -46,6 +47,14 @@ Simple explanation:
 Useful business interpretation:
 
 `A material can be important even if it is not the largest shortage, because it may affect many finished goods at once.`
+
+### Simple explanation of Materials Available in Enough Quantity
+
+`This table shows the materials that already have enough stock to support the full current scenario requirement.`
+
+Useful business interpretation:
+
+`This helps the planner separate shortage materials from safe materials, so teams do not spend time expediting parts that are already sufficiently covered.`
 
 ## Aggregate Shortages
 
@@ -191,6 +200,43 @@ Meaning:
 
 This score ranks materials by combined usage breadth and quantity significance in the current scenario.
 
+## Materials Available in Enough Quantity
+
+This section shows materials whose current available stock is already sufficient for the full scenario requirement.
+
+Displayed columns:
+
+- `Component`
+- `Used In FG Count`
+- `Used In FGs`
+- `Total Required Qty`
+- `Available Qty`
+- `Surplus Qty`
+
+### Enough-stock rule
+
+Formula:
+
+```text
+Available Qty >= Total Required Qty
+```
+
+Meaning:
+
+The material already has enough stock to cover the full current scenario requirement.
+
+### Surplus Qty
+
+Formula:
+
+```text
+Surplus Qty = max(Available Qty - Total Required Qty, 0)
+```
+
+Meaning:
+
+This is the quantity still left after covering the full current scenario requirement.
+
 ## Practical Reading Order
 
 For planners and procurement teams, the fastest reading order is:
@@ -198,4 +244,5 @@ For planners and procurement teams, the fastest reading order is:
 1. Review `Aggregate shortages` for the full gap table.
 2. Review `Procurement ranking` for shortage-driven action order.
 3. Review `Raw material importance by use` to identify strategically important shared materials.
-4. Cross-check important materials against finished-good blockers in the `Finished Goods` tab.
+4. Review `Materials available in enough quantity` to identify components that are already safe.
+5. Cross-check important materials against finished-good blockers in the `Finished Goods` tab.
