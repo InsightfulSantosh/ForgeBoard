@@ -1,19 +1,29 @@
 # C&S Electrics Pitch Deck
 
-This document is a client-facing presentation script for `C&S Electrics`. It is designed to help position ForgeBoard as a serious AI-assisted manufacturing planning product backed by a strong engineering and AI team.
+This document is a client-facing presentation script for `C&S Electrics`.
 
-Use this as a slide-by-slide deck outline and as your speaker notes.
+It is designed to help position ForgeBoard as:
 
-## Presentation Goal
+- a practical manufacturing decision platform
+- a serious AI-assisted planning system
+- a foundation that can scale from pilot to enterprise rollout
 
-The goal is not only to show a dashboard.
+Use this document as:
 
-The goal is to make C&S Electrics feel that:
+- a slide deck outline
+- a speaker-note guide
+- a strategic narrative for client discussion
 
-- you understand their manufacturing planning problem deeply
-- the solution is practical, not experimental
-- the AI layer is grounded and enterprise-safe
-- your team can take this from pilot to production
+## Presentation Objective
+
+The objective is not only to show a polished interface.
+
+The objective is to make C&S Electrics feel that:
+
+- you understand the planning problem at operational depth
+- you understand the commercial and customer-impact side of planning
+- you know where deterministic planning, AI, ML, and optimization each fit
+- your team can build this as a long-term platform, not only a demo
 
 ## Positioning Rule
 
@@ -21,11 +31,28 @@ Do not pitch ForgeBoard as:
 
 - just a dashboard
 - just a chatbot
-- just an Excel automation tool
+- just Excel automation
 
 Pitch ForgeBoard as:
 
-`An AI-assisted production feasibility and material-prioritization system for faster, more explainable manufacturing decisions.`
+`An AI-assisted manufacturing decision platform that converts planning inputs into explainable production, fulfillment, and material-prioritization decisions.`
+
+## How To Sound Strong in the Meeting
+
+Your strongest posture is:
+
+- business-first
+- technically credible
+- controlled
+- practical
+
+Do not sound flashy.
+
+Do sound like:
+
+- you know manufacturing planning reality
+- you know how enterprise AI should be controlled
+- you know how to evolve this in phases
 
 ---
 
@@ -37,66 +64,130 @@ Pitch ForgeBoard as:
 
 ### Subtitle
 
-`AI-assisted Production Feasibility, Material Prioritization, and Planner Decision Support`
+`AI-assisted Production Feasibility, Fulfillment, and Material Prioritization`
 
 ### What to say
 
-`Today we are showing a practical AI-assisted planning system designed to convert your existing workbook-driven process into a faster, more explainable daily decision workflow.`
+`Today we are showing a practical AI-assisted planning platform designed to convert the existing workbook-driven process into a faster, more explainable operational decision workflow.`
 
-`The objective is simple: given demand, BOM, and inventory, help your team know what can be built now, what is blocked, what can be partially fulfilled, and what should be prioritized first.`
+`The focus is not only on what can be built, but also on what can be partially fulfilled, what is blocked, what procurement should do next, and how the same platform can later support customer, sales-order, and SLA-aware prioritization.`
 
 ---
 
-## Slide 2. The Business Problem
+## Slide 2. The Core Business Problem
 
 ### Slide title
 
-`The Planning Gap`
+`The Planning Problem Is Not Lack of Data`
 
 ### Slide content
 
-- demand exists in Excel, but decision logic is still manual
-- BOM data exists, but impact across finished goods is hard to see quickly
-- inventory exists, but shortage pressure is not decision-ready
-- planners spend time reconciling sheets instead of making decisions
-- procurement sees shortages, but not always what matters most first
-- management sees reports, but not an explainable action view
+- demand data exists
+- BOM data exists
+- inventory data exists
+- customer commitments exist
+- manual planner judgment exists
+- but decision-making is still fragmented
 
 ### What to say
 
-`The real issue is not data availability. The issue is decision latency.`
+`The issue is not that the organization lacks data. The issue is that these inputs are still not being converted into one fast, trusted, explainable planning answer.`
 
-`Teams already have demand, BOM, and stock data. But turning that into a trusted answer like what can be produced, what percentage of demand can be fulfilled, and what should be procured first is still too manual.`
+`That is why teams end up spending time reconciling sheets instead of making decisions.`
 
 ---
 
-## Slide 3. Why This Matters to C&S Electrics
+## Slide 3. The Full Planning Problem Landscape
 
 ### Slide title
 
-`Why This Problem Is Expensive`
+`What the Planning Team Actually Needs to Decide`
+
+### Slide content
+
+- what finished goods can be produced now
+- what percentage of current demand can be fulfilled
+- which raw materials are blocking production
+- which shortages matter most to procurement
+- which orders, customers, or items should be prioritized first
+- what will become risky next under changing demand or supply conditions
+
+### What to say
+
+`A real planning system has to go beyond shortage reporting.`
+
+`It has to support fulfillment, prioritization, customer impact, procurement action, and future risk understanding in one workflow.`
+
+---
+
+## Slide 4. Why This Is Expensive for the Business
+
+### Slide title
+
+`Why Spreadsheet-Driven Planning Creates Cost`
 
 ### Slide content
 
 - delayed production decisions
-- avoidable manual planner effort
 - reactive procurement
-- missed visibility into partial-order fulfillment
-- difficult prioritization across competing finished goods
+- poor visibility into partial fulfillment
+- inconsistent prioritization across planners
+- difficulty answering customer-impact questions quickly
+- management reporting without action clarity
 
 ### What to say
 
-`When this process remains spreadsheet-driven, the cost is not only time. It also creates slower response to shortages, inconsistent prioritization, and weaker visibility into what can still be delivered even when full demand cannot be met.`
+`The cost is not only time. The cost is slower response, weaker prioritization, delayed customer communication, and avoidable operational confusion.`
 
-`That is where ForgeBoard changes the workflow.`
+`When the answer depends too much on spreadsheet skill, the planning process becomes harder to scale and harder to trust.`
 
 ---
 
-## Slide 4. Our Solution
+## Slide 5. Why This Matters Specifically to C&S Electrics
 
 ### Slide title
 
-`What ForgeBoard Does`
+`Why This Matters to C&S Electrics`
+
+### Slide content
+
+- complex finished-good and component relationships
+- competing demand across items and customers
+- need to balance plant execution with service commitments
+- need for faster planner and procurement alignment
+- need for explainable priorities, not only raw reports
+
+### What to say
+
+`For a company like C&S Electrics, the challenge is not only whether material exists. The challenge is deciding which commitments should be protected first, which constraints matter most, and how to make that answer transparent across planning, procurement, and leadership.`
+
+---
+
+## Slide 6. Our Solution Vision
+
+### Slide title
+
+`What ForgeBoard Is`
+
+### Slide content
+
+- a deterministic planning engine
+- a planner-facing decision workspace
+- a material-prioritization and fulfillment visibility layer
+- a grounded AI explanation and interaction layer
+- a foundation for future forecasting and optimization
+
+### What to say
+
+`ForgeBoard is not positioned as a reporting layer. It is positioned as a manufacturing decision layer sitting between raw planning inputs and day-to-day operational action.`
+
+---
+
+## Slide 7. What ForgeBoard Solves Today
+
+### Slide title
+
+`Current Product Capabilities`
 
 ### Slide content
 
@@ -104,99 +195,43 @@ Pitch ForgeBoard as:
 2. calculates net demand after FG on-hand stock
 3. explodes BOM requirements and detects shortages
 4. computes max producible and recommended build by FG
-5. shows fulfillment percentage for every FG
+5. shows fulfillment percentage for each FG
 6. identifies limiting and blocking materials
 7. ranks procurement pressure and material importance
-8. explains the result through a grounded planner assistant
+8. explains the current scenario through a grounded planner assistant
 
 ### What to say
 
-`ForgeBoard converts the workbook into a decision engine.`
-
-`Instead of asking planners to interpret multiple sheets manually, the system produces a direct answer on finished goods, materials, fulfillment, and priority.`
+`The current platform already converts workbook data into a direct planning answer: what is buildable, what is blocked, what can be partially fulfilled, and where procurement attention should go first.`
 
 ---
 
-## Slide 5. What Makes This More Than a Dashboard
+## Slide 8. What ForgeBoard Can Solve Next
 
 ### Slide title
 
-`This Is a Decision System, Not a Reporting Screen`
+`Beyond the Current UI`
 
 ### Slide content
 
-- deterministic production logic
-- scenario controls for demand and procurement simulation
-- explainable FG and material decisions
-- planner-facing workflow with exports
-- natural-language assistant on top of the scenario
+- sales-order-level allocation
+- customer-priority and account-priority planning
+- item criticality and service-part prioritization
+- SLA and dispatch-risk visibility
+- procurement recommendation logic
+- supplier lead-time intelligence
+- line and capacity-aware scheduling
+- scenario recommendation and optimization
 
 ### What to say
 
-`A normal dashboard shows the data. ForgeBoard takes a position on the data.`
+`We are not presenting ForgeBoard as limited to the current dashboard.`
 
-`It tells the team what can be built, what is stopping production, what can be partially fulfilled, and which actions matter most right now.`
-
----
-
-## Slide 6. The AI Story
-
-### Slide title
-
-`Where AI Adds Value`
-
-### Slide content
-
-#### Deterministic engine
-
-- BOM explosion
-- inventory matching
-- shortage calculation
-- max producible logic
-- prioritization logic
-
-#### AI layer
-
-- planner Q&A
-- business-language explanation
-- grounded scenario interpretation
-- future forecasting and recommendation extensions
-
-### What to say
-
-`We intentionally separated core manufacturing logic from the AI layer.`
-
-`The engine calculates the answer using deterministic business logic. The AI layer makes the system easier to query, easier to explain, and easier to scale into future recommendation capabilities.`
-
-`This is important because enterprise clients do not want black-box AI deciding production truth. They want AI on top of trustworthy planning logic.`
+`We are showing a foundation that can evolve into a broader manufacturing intelligence and decision-support platform.`
 
 ---
 
-## Slide 7. Why This Shows a Strong AI Team
-
-### Slide title
-
-`Why This Demonstrates Real AI Engineering`
-
-### Slide content
-
-- grounded AI, not generic chatbot behavior
-- deterministic fallback when LLM output is weak or unavailable
-- structured question interpretation for FG and material queries
-- explainable answers tied to scenario data
-- modular architecture ready for future integrations
-
-### What to say
-
-`A strong AI team does not just add a chatbot to a dashboard.`
-
-`A strong AI team designs a reliable system where deterministic logic remains the source of truth, the LLM is grounded in live scenario context, and unsafe or generic responses fall back safely.`
-
-`That is the difference between demo AI and deployable AI.`
-
----
-
-## Slide 8. Live Product Experience
+## Slide 9. Current Product Experience
 
 ### Slide title
 
@@ -204,21 +239,175 @@ Pitch ForgeBoard as:
 
 ### Slide content
 
-- `Overview`: executive production posture and decision snapshot
-- `Finished Goods`: FG-level fulfillment, blockers, shortages, and covered components
-- `Materials`: shortage pressure, procurement ranking, material importance, and enough-stock materials
-- `Assistant`: planner questions on top of the live scenario
-- `Downloads`: handoff artifacts for planning, procurement, and management
+- `Overview`: executive production posture and fulfillment summary
+- `Finished Goods`: FG-level fulfillment, blockers, and covered components
+- `Materials`: shortage pressure, procurement ranking, and material importance
+- `Assistant`: natural-language planner interaction
+- `Downloads`: exportable planning artifacts
 
 ### What to say
 
-`The application is designed as a working planner cockpit, not a technical prototype.`
+`The current product is already organized as a working planner cockpit.`
 
-`It gives management a fast summary, planners a diagnosis workspace, procurement a ranked material view, and all teams exportable outputs.`
+`That matters because clients do not want to buy logic alone. They want a usable operational workflow.`
 
 ---
 
-## Slide 9. Key Screens to Demonstrate
+## Slide 10. The Prioritization Story
+
+### Slide title
+
+`Prioritization Is Where Planning Becomes Business-Critical`
+
+### Slide content
+
+ForgeBoard can support prioritization by:
+
+- finished good
+- sales order
+- customer
+- item or SKU class
+- project priority
+- service-part criticality
+- margin or order value
+- SLA risk
+- manual client or leadership override
+
+### What to say
+
+`In real operations, feasibility alone is not enough.`
+
+`If two items are both buildable, the business still needs to know which one should go first. That decision often depends on customer importance, sales order priority, item criticality, SLA pressure, or explicit management direction.`
+
+---
+
+## Slide 11. How Priority Can Be Built
+
+### Slide title
+
+`How ForgeBoard Can Prioritize Intelligently`
+
+### Slide content
+
+#### Layer 1: Hard business rules
+
+- strategic customer
+- service-part urgency
+- contractual obligation
+- executive override
+
+#### Layer 2: Weighted priority score
+
+- fulfillment feasibility
+- customer priority
+- sales order priority
+- item priority
+- SLA risk
+- margin or value
+- shortage recovery gain
+
+#### Layer 3: Optimization
+
+- best allocation under limited material and capacity
+
+### What to say
+
+`The strongest prioritization model is usually layered.`
+
+`Some decisions should be hard rules. Some should be weighted business scoring. And once constraints become complex, optimization should decide the best allocation.`
+
+---
+
+## Slide 12. AI, ML, and Optimization: Where Each Fits
+
+### Slide title
+
+`Use the Right Method for the Right Planning Problem`
+
+### Slide content
+
+#### Deterministic logic
+
+- BOM math
+- shortage truth
+- max producible
+- fulfillment percentage
+
+#### Optimization
+
+- inventory allocation
+- order prioritization under shortage
+- scheduling under constraints
+
+#### Machine learning
+
+- demand forecasting
+- lead-time prediction
+- SLA breach prediction
+- stockout risk prediction
+
+#### LLMs
+
+- planner Q&A
+- business-language explanation
+- SOP-aware interaction
+- executive summaries
+
+### What to say
+
+`This is one of the most important architecture messages.`
+
+`We are not trying to use one AI tool for every problem. We use deterministic logic where truth must be exact, optimization where constrained allocation matters, machine learning where patterns must be learned from history, and LLMs where explanation and interaction matter.`
+
+---
+
+## Slide 13. Why This Shows a Strong AI Team
+
+### Slide title
+
+`Why This Is Real AI Engineering`
+
+### Slide content
+
+- deterministic system of record
+- grounded LLM layer
+- safe fallback behavior
+- clear separation of rule logic, ML, optimization, and LLM functions
+- modular architecture for phased rollout
+
+### What to say
+
+`A strong AI team does not build a generic chatbot and call it a solution.`
+
+`A strong AI team knows which parts must remain deterministic, which parts should become predictive, and how to control LLM behavior in an enterprise workflow.`
+
+`That is the difference between a demo and a production-grade AI roadmap.`
+
+---
+
+## Slide 14. Safe AI Story for the Client
+
+### Slide title
+
+`AI Is Controlled, Not Loosely Added`
+
+### Slide content
+
+- the engine calculates the planning truth
+- the assistant interprets and explains that truth
+- Gemini is optional
+- model answers are grounded in scenario context
+- weak or ungrounded responses fall back safely
+
+### What to say
+
+`This point will matter to enterprise stakeholders.`
+
+`The model is not allowed to invent the planning result. The planning result comes from deterministic engine logic. AI sits on top of that to improve usability, explanation, and future expansion.`
+
+---
+
+## Slide 15. Live Demo Flow
 
 ### Slide title
 
@@ -226,22 +415,22 @@ Pitch ForgeBoard as:
 
 ### Slide content
 
-1. scenario controls in the sidebar
-2. overview posture and fulfillment percentages
-3. one FG drill-down with blocker reasons
-4. material pressure and procurement ranking
-5. assistant question answering
-6. downloads and artifact handoff
+1. scenario controls
+2. overview with fulfillment percentages
+3. FG drill-down with blocker reasons
+4. material ranking and enough-stock view
+5. assistant Q&A
+6. downloads and handoff artifacts
 
 ### Demo script
 
 #### Step 1
 
-Show the workbook input and scenario controls.
+Show the workbook source and scenario controls.
 
 Say:
 
-`We start from the same workbook structure your team already uses, but we convert it into a reusable decision workflow.`
+`We start from the same workbook structure your planning team already uses, but we remove the manual interpretation overhead.`
 
 #### Step 2
 
@@ -249,7 +438,7 @@ Show `Overview`.
 
 Say:
 
-`This gives management a high-level answer: what is buildable, what is blocked, and what percentage of demand can be fulfilled right now.`
+`This gives management an immediate answer on production posture, demand fulfillment, and procurement pressure.`
 
 #### Step 3
 
@@ -257,7 +446,7 @@ Show `Finished Goods`.
 
 Say:
 
-`At FG level, the system shows not only whether the item is blocked, but exactly which raw materials are causing the constraint and how much of the demand can still be met.`
+`This view explains not only what is blocked, but exactly why it is blocked and how much of the demand can still be fulfilled now.`
 
 #### Step 4
 
@@ -265,7 +454,7 @@ Show `Materials`.
 
 Say:
 
-`This view is where planning and procurement align. It shows both shortage urgency and strategic material importance.`
+`This connects planning and procurement. It shows both shortage urgency and strategic material importance, and it separates safe materials from true risk materials.`
 
 #### Step 5
 
@@ -273,7 +462,7 @@ Show `Assistant`.
 
 Say:
 
-`This is where AI helps the user interact with the planning result in natural language, without replacing the core production logic.`
+`This is where AI reduces friction. Users can query the scenario in natural language without losing the grounding of the planning engine.`
 
 #### Step 6
 
@@ -281,142 +470,156 @@ Show `Downloads`.
 
 Say:
 
-`The output is not locked in the UI. It can be handed off immediately through structured artifacts for other teams.`
+`The output is ready for handoff. Planning insight is not trapped in the UI.`
 
 ---
 
-## Slide 10. Architecture Overview
+## Slide 16. Architecture Overview
 
 ### Slide title
 
-`Solution Architecture`
+`Current and Future Architecture`
 
 ```mermaid
 flowchart TD
-    A["Workbook Input"] --> B["Data Ingestion"]
-    B --> C["Scenario Layer"]
+    A["Workbook / ERP / Orders / Inventory / Supplier Data"] --> B["Ingestion and Validation"]
+    B --> C["Scenario and Master Data Layer"]
     C --> D["Deterministic Planning Engine"]
-    D --> E["FG Analysis"]
-    D --> F["Material Analysis"]
-    D --> G["Production Plan"]
-    E --> H["Streamlit Decision Workspace"]
-    F --> H
-    G --> H
-    D --> I["Download Artifacts"]
-    H --> J["Planner Assistant"]
-    J --> K["Deterministic Answer Layer"]
-    J --> L["Optional Gemini via LangChain"]
+    C --> E["Priority Rule Engine"]
+    C --> F["Optimization Layer"]
+    C --> G["ML Services"]
+    C --> H["LLM and Knowledge Layer"]
+    D --> I["Feasibility Outputs"]
+    E --> J["Priority Outputs"]
+    F --> K["Allocation Outputs"]
+    G --> L["Forecast and Risk Outputs"]
+    H --> M["Grounded Assistant"]
+    I --> N["Planner UI / APIs / Exports"]
+    J --> N
+    K --> N
+    L --> N
+    M --> N
 ```
 
 ### What to say
 
-`The architecture is intentionally layered.`
+`The architecture is intentionally modular.`
 
-`Workbook ingestion and scenario preparation feed a deterministic planning engine. The UI, downloads, and assistant all sit on top of the same planning result. That means there is one planning truth across all user interactions.`
+`That means the current workbook-driven product can evolve toward ERP-connected planning, predictive services, and optimization without throwing away the core design.`
 
 ---
 
-## Slide 11. How the AI Layer Is Controlled
+## Slide 17. Machine Learning and LLM Expansion Path
 
 ### Slide title
 
-`Safe, Grounded AI Design`
+`How Advanced Intelligence Can Be Added`
 
 ### Slide content
 
-- question is interpreted against known FG and component entities
-- deterministic answer is produced first
-- Gemini is optional, not mandatory
-- Gemini receives structured scenario context
-- weak or ungrounded answers fall back safely
+#### Machine learning opportunities
+
+- demand forecast
+- supplier lead-time prediction
+- stockout risk prediction
+- order-delay prediction
+- anomaly detection
+
+#### LLM opportunities
+
+- grounded planner Q&A
+- policy and SOP question answering
+- scenario explanation
+- executive summary generation
+- action recommendation narratives
 
 ### What to say
 
-`This matters in enterprise environments.`
+`This is where the platform becomes more powerful over time.`
 
-`We do not allow a free-form LLM to invent planning answers. The model is used as a grounded explanation layer on top of deterministic engine output.`
+`Machine learning helps where the business needs prediction from history. LLMs help where the business needs explanation, interaction, and knowledge access.`
 
 ---
 
-## Slide 12. Business Value
+## Slide 18. Business Value
 
 ### Slide title
 
-`Expected Business Impact`
+`Expected Value to C&S Electrics`
 
 ### Slide content
 
-- faster planning cycle
-- quicker blocker identification
-- better visibility into partial fulfillment
-- clearer procurement action ranking
-- more consistent FG prioritization
-- reduced manual spreadsheet dependency
+- faster daily planning cycle
+- clearer visibility into what can be fulfilled now
+- better prioritization across materials, finished goods, and future orders
+- quicker procurement response
+- better communication to customer-facing teams
+- a path from spreadsheet planning to decision intelligence
 
 ### What to say
 
-`The immediate value is not abstract AI. The immediate value is faster and better daily planning decisions.`
+`The immediate value is operational speed and clarity.`
 
-`The long-term value is that the same foundation can evolve into a broader planning platform.`
+`The strategic value is that the same platform can later support customer commitment, SLA risk, procurement intelligence, and planning optimization.`
 
 ---
 
-## Slide 13. Why We Can Deliver This
+## Slide 19. Why We Are the Right Team
 
 ### Slide title
 
-`Why Our Team Is Strong for This Project`
+`Why Our Team Is Well Suited for This Project`
 
 ### Slide content
 
-- we understand both workflow design and planning logic
-- we separate deterministic business logic from AI explanation
-- we build explainable systems, not opaque demos
-- we design for extensibility from day one
-- we can move from pilot to integration roadmap
+- we combine product thinking with planning logic
+- we treat AI as a controlled enterprise capability, not a novelty layer
+- we can separate current delivery from future roadmap cleanly
+- we can build in phases without losing architectural continuity
+- we understand that explainability is as important as intelligence
 
 ### What to say
 
-`What we are showing is not only UI polish. It is a disciplined system design approach.`
+`The strength of our approach is that we are not forcing everything into one black-box AI story.`
 
-`That is why we believe we are the right team to build this with C&S Electrics: we are combining product thinking, manufacturing logic, and practical AI engineering.`
+`We are building a manufacturing decision platform with a deterministic core, controlled AI assistance, and a clear path to predictive and optimization features.`
 
 ---
 
-## Slide 14. Roadmap
+## Slide 20. Recommended Pilot Scope
 
 ### Slide title
 
-`How This Can Scale`
+`How We Suggest Taking This Forward`
 
 ### Slide content
 
-#### Phase 1
+#### Pilot objective
 
-- workbook-driven decision cockpit
-- planner assistant
-- exports for planning and procurement
+- prove decision value on live planning data
 
-#### Phase 2
+#### Pilot focus
 
-- ERP integration
-- scheduled daily runs
-- scenario history and comparison
+- FG feasibility
+- fulfillment visibility
+- blocker diagnosis
+- procurement prioritization
+- assistant explanations
 
-#### Phase 3
+#### Next-phase expansion
 
+- order and customer priority
+- SLA logic
 - forecasting
-- lead-time-aware recommendations
-- supplier intelligence
-- role-based enterprise workflow
+- optimization
 
 ### What to say
 
-`We are not presenting a dead-end prototype. We are presenting a foundation that can scale in controlled phases.`
+`The right next step is a focused pilot that proves value quickly, while keeping the architecture ready for broader rollout.`
 
 ---
 
-## Slide 15. Closing
+## Slide 21. Closing
 
 ### Slide title
 
@@ -424,94 +627,52 @@ flowchart TD
 
 ### What to say
 
-`ForgeBoard shows how C&S Electrics can move from workbook-based planning review to an explainable AI-assisted decision workflow.`
+`ForgeBoard is not just a better view of the workbook.`
 
-`It is practical enough to use now, structured enough to integrate later, and designed in a way that keeps business logic trustworthy while still using AI where it adds real value.`
+`It is a path from manual planning interpretation to explainable manufacturing decision support.`
 
-`We would like to take this forward as a focused pilot and turn this into a production-ready planning capability for your team.`
+`It is practical enough to use now, safe enough for enterprise adoption, and extensible enough to become a larger planning intelligence platform for C&S Electrics.`
+
+`We would like to take this forward as a pilot and build it into a production-ready capability with your team.`
 
 ---
 
-## Presentation Style Notes
-
-Use this tone in the meeting:
-
-- calm
-- confident
-- practical
-- business-first
-- technically credible
-
-Do not overuse these words:
-
-- disruption
-- revolutionary
-- magical
-- fully autonomous
-
-Prefer these phrases:
-
-- explainable
-- grounded
-- production-feasible
-- planner-facing
-- decision support
-- scenario-driven
-- enterprise-safe
-
-## What Will Impress the Client Most
-
-If time is limited, emphasize these points:
-
-1. `This is not generic AI. The engine calculates the truth and AI explains it.`
-2. `The system shows partial fulfillment, not only blocked vs not blocked.`
-3. `Procurement and planning are connected in one workflow.`
-4. `The architecture is already modular enough for API and ERP integration later.`
-5. `The assistant is grounded and fallback-safe.`
-
 ## Questions You Should Be Ready For
 
-### Can this work with our actual workbook?
+### Is the current product already doing customer and sales-order prioritization?
 
 Answer:
 
-`Yes, as long as the workbook preserves the required planning sheets and consistent item coding. The current architecture is already designed around workbook ingestion and can be adapted further for your exact operational format.`
+`Not yet in the current UI. The current product already has the right planning foundation, and customer-, order-, and SLA-aware prioritization is a natural next-phase extension on top of the same architecture.`
 
-### Is the AI making the planning decision?
-
-Answer:
-
-`No. The planning decision is calculated by deterministic business logic. AI is used as a grounded explanation and interaction layer on top of that logic.`
-
-### Can this integrate with ERP later?
+### Is AI making the production decision?
 
 Answer:
 
-`Yes. The current Streamlit product is the planner-facing layer, but the engine and workflow design already support moving toward API and scheduler-based integration.`
+`No. The production and fulfillment logic is deterministic. AI is used for explanation, interaction, and future predictive services where appropriate.`
 
-### Can procurement use this directly?
-
-Answer:
-
-`Yes. The Materials view and export artifacts are already structured for procurement prioritization and shortage analysis.`
-
-### What happens if the model gives a bad answer?
+### Can this work with our actual workbook and later with ERP?
 
 Answer:
 
-`The assistant falls back to deterministic planner answers. The LLM is not allowed to become the only source of truth.`
+`Yes. The current product is workbook-driven, and the architecture is intentionally modular so it can later move toward ERP or API-based data ingestion.`
 
-## Final Advice
+### Can priority be based on customer, sales order, item, or manual override?
 
-If you want the client to feel your AI team is strong, do not try to sound flashy.
+Answer:
 
-Sound controlled.
+`Yes. That is exactly how we would extend the next-phase priority framework. Some priorities should be hard rules, some should be weighted scoring, and some should be handled through constrained optimization.`
 
-Show that:
+### Why not just use a chatbot on top of Excel?
 
-- you understand the manufacturing problem
-- you understand the system design
-- you understand where AI is useful
-- you also understand where AI must be constrained
+Answer:
 
-That combination is what makes teams look credible in front of enterprise clients.
+`Because that would not create planning truth. A chatbot without a deterministic planning engine would explain data, but it would not reliably calculate feasibility, fulfillment, and prioritization.`
+
+## Final Advice for the Meeting
+
+The most impressive line you can keep repeating in different ways is:
+
+`The engine calculates the truth, and AI makes that truth easier to use, explain, and extend.`
+
+If you stay disciplined around that message, you will sound like a strong AI and systems team, not a team trying to impress with generic AI language.

@@ -80,7 +80,7 @@ This confirms the client problem is a planning and optimization problem, not a d
 
 ForgeBoard can be used in multiple ways depending on the client environment:
 
-- Streamlit interface for planners
+- web-based planner workspace
 - API or workflow integration behind ERP exports
 - markdown, CSV, and JSON artifact handoff for procurement and operations teams
 

@@ -324,7 +324,7 @@ flowchart TD
     G --> J
     H --> J
     I --> J
-    J --> K["Streamlit UI"]
+    J --> K["Planner Web Application"]
     J --> L["Download Artifacts"]
     J --> M["Planning Assistant"]
     M --> N["Deterministic Answer Layer"]
@@ -797,7 +797,7 @@ That separation is what makes the platform enterprise-safe and scalable.
 
 ## 13. Current User Experience
 
-The current Streamlit app is organized into five tabs.
+The current planner web application is organized into five tabs.
 
 ### 13.1 Overview
 
@@ -907,7 +907,7 @@ The assistant is intentionally not a free-form chatbot.
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant S as Streamlit UI
+    participant S as Planner Web App
     participant W as workflow.py
     participant E as engine.py
     participant R as Priority Rule Engine
@@ -943,7 +943,7 @@ sequenceDiagram
 
 Key project modules today:
 
-- `streamlit_app.py`: Streamlit-first frontend and UX
+- `streamlit_app.py`: planner web frontend and user experience layer
 - `bom_ai_engine/engine.py`: planning logic and scenario calculations
 - `bom_ai_engine/workflow.py`: orchestration, metrics, and artifacts
 - `bom_ai_engine/assistant.py`: planner question answering
@@ -966,7 +966,7 @@ Likely future modules:
 Important current design choices:
 
 - `ForgeBoard` is the product name, while `bom_ai_engine` remains the internal Python package name
-- the current product is Streamlit-first
+- the current product is delivered through a web-based planner application
 - results and artifacts are generated in memory for the app session
 - deterministic planning logic remains the source of truth
 - Gemini is optional and explanatory, not authoritative

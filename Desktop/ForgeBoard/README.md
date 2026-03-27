@@ -24,7 +24,7 @@ Run commands from the repo root:
 cd /path/to/ForgeBoard
 ```
 
-Run the Streamlit app:
+Run the web application:
 
 ```bash
 streamlit run streamlit_app.py
@@ -84,7 +84,7 @@ The engine answers:
 - How does the answer change if demand grows or stock is procured?
 - Which FG should be prioritized first under the current scenario?
 
-## Streamlit UX
+## Web Application UX
 
 Install the UI dependencies first, then create a `.env` file in the repo root if you want Gemini-backed answers:
 
@@ -93,7 +93,7 @@ GOOGLE_API_KEY=your-google-ai-studio-key
 GEMINI_MODEL=gemini-2.5-flash
 ```
 
-Run the frontend:
+Run the web frontend:
 
 ```bash
 streamlit run streamlit_app.py
@@ -181,12 +181,12 @@ Typical planner questions:
 - `Which material should I procure first?`
 - `Which FG should I prioritize first?`
 
-The Streamlit app loads `.env` automatically. Gemini uses `GOOGLE_API_KEY`. ForgeBoard grounds LLM answers with deterministic engine output and structured scenario context. If the LangChain Gemini call fails or returns an unusable answer, the assistant falls back to deterministic answers.
+The web application loads `.env` automatically. Gemini uses `GOOGLE_API_KEY`. ForgeBoard grounds LLM answers with deterministic engine output and structured scenario context. If the LangChain Gemini call fails or returns an unusable answer, the assistant falls back to deterministic answers.
 
 ## Repo Layout
 
 - `bom_ai_engine/`: core planning, assistant, reporting, and workflow modules
-- `streamlit_app.py`: ForgeBoard frontend
+- `streamlit_app.py`: ForgeBoard web frontend
 - `examples/`: sample procurement and priority JSON files
 - `docs/`: client-facing explanation and presentation notes
 
